@@ -1,4 +1,5 @@
 package A_Introduction;
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -16,54 +17,65 @@ public class GuessLetter {
         };
 
         String[] word={"this","two","fat","that"};
-        System.out.println(getIndex(letters,word[0]));
-
+        print(getIndex(letters,word[0]));
+        print(getIndex(letters,word[1]));
+        print(getIndex(letters,word[2]));
+        print(getIndex(letters,word[3]));
+    }
+    public static void print(Stack<Integer[]> stk){
+        if(stk==null||stk.isEmpty()){
+            System.out.printf("no such word \n");
+            return;
+        }
+        for(Integer[] arr:stk){
+            System.out.printf("[%d %d]",arr[0],arr[1]);
+        }
+        System.out.printf("\n");
     }
     public enum Oriantation {TOP,TOPLEFT,TOPRIGHT,RIGHT,BOTTOMRIGHT,BOTTOM,BOTTOMLEFT,LEFT}
-    public static Stack<?> getIndex(char[][] matrix,String word){
+    public static Stack<Integer[]> getIndex(char[][] matrix,String word){
         //先进行正向的检查
         char[] letters=word.toCharArray();
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[i].length;j++){
                 if(matrix[i][j]==letters[0]){
                     //发现与第一个字母相等，开始向八个方向检查
-                    Stack<?> top=anchorCompare(matrix,word,j,i,Oriantation.TOP);
+                    Stack<Integer[]> top=anchorCompare(matrix,word,i,j,Oriantation.TOP);
                     if(top!=null)return top;
 
-                    Stack<?> topLeft=anchorCompare(matrix,word,j,i,Oriantation.TOPLEFT);
+                    Stack<Integer[]> topLeft=anchorCompare(matrix,word,i,j,Oriantation.TOPLEFT);
                     if(topLeft!=null)return topLeft;
 
-                    Stack<?> topRight=anchorCompare(matrix,word,j,i,Oriantation.TOPRIGHT);
+                    Stack<Integer[]> topRight=anchorCompare(matrix,word,i,j,Oriantation.TOPRIGHT);
                     if(topRight!=null)return topRight;
 
-                    Stack<?> right=anchorCompare(matrix,word,j,i,Oriantation.RIGHT);
+                    Stack<Integer[]> right=anchorCompare(matrix,word,i,j,Oriantation.RIGHT);
                     if(right!=null)return right;
 
-                    Stack<?> bottomRight=anchorCompare(matrix,word,j,i,Oriantation.BOTTOMRIGHT);
+                    Stack<Integer[]> bottomRight=anchorCompare(matrix,word,i,j,Oriantation.BOTTOMRIGHT);
                     if(bottomRight!=null)return bottomRight;
 
-                    Stack<?> bottom=anchorCompare(matrix,word,j,i,Oriantation.BOTTOM);
+                    Stack<Integer[]> bottom=anchorCompare(matrix,word,i,j,Oriantation.BOTTOM);
                     if(bottom!=null)return bottom;
 
-                    Stack<?> bottomLeft=anchorCompare(matrix,word,j,i,Oriantation.BOTTOMLEFT);
+                    Stack<Integer[]> bottomLeft=anchorCompare(matrix,word,i,j,Oriantation.BOTTOMLEFT);
                     if(bottomLeft!=null)return bottomLeft;
 
-                    Stack<?> left=anchorCompare(matrix,word,j,i,Oriantation.LEFT);
+                    Stack<Integer[]> left=anchorCompare(matrix,word,i,j,Oriantation.LEFT);
                     if(left!=null)return left;
                 }
             }
         }
         return null;
     }
-    public static Stack<?> anchorCompare(char[][] matrix,String word,int x,int y,Oriantation direction){
+    public static Stack<Integer[]> anchorCompare(char[][] matrix,String word,int x,int y,Oriantation direction){
         //向上
         int index=0;
         Stack<Integer[]> stk=new Stack<Integer[]>();
-        stk.push(new Integer[]{x,y});
         while(x>=0&&x<=3&&y>=0&&x<=3){
             if(matrix[x][y]==word.charAt(index)){
-                stk.push(new Integer[]{x,y});
-                if(index==3){
+                stk.push(new Integer[]{y,3-x});
+                if(index==word.length()-1){
                     return stk;
                 }
             }else{
