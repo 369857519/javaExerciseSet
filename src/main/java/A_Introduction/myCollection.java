@@ -1,21 +1,22 @@
 package A_Introduction;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * Created by qilianshan on 17/7/26.
  */
-public class MyCollection<E> implements Collection<E> {
-    public static void main(String[] args){
-        MyCollection<Integer> m=new MyCollection<Integer>(100);
+public class MyCollection<E extends Comparable> implements Collection<E> {
+    public static void main(String[] args) throws InstantiationException,IllegalAccessException{
+        MyCollection<Integer> m=new MyCollection<Integer>(int.class,100);
         m.add(1);m.add(3);m.add(5);
         System.out.print(m.findMax());
         System.out.println(m.findMin());
     }
-    MyCollection (int size){
+    MyCollection (Class<E> c,int size) throws InstantiationException,IllegalAccessException{
         this.size=size;
-        inn=(E[]) new Object[size];
+        inn= (E[])Array.newInstance(c,size);
     }
     private E[] inn=null;
     private int size=0;
