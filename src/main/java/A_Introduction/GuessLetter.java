@@ -15,6 +15,7 @@ public class GuessLetter {
                 {'o','a','h','g'},
                 {'f','g','d','t'}
         };
+        //10*R*C*W
 
         String[] word={"this","two","fat","that"};
         print(getIndex(letters,word[0]));
