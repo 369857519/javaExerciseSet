@@ -2,6 +2,7 @@ package A_Introduction;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -9,14 +10,14 @@ import java.util.Iterator;
  */
 public class MyCollection<E extends Comparable> implements Collection<E> {
     public static void main(String[] args) throws InstantiationException,IllegalAccessException{
-        MyCollection<Integer> m=new MyCollection<Integer>(int.class,100);
+        MyCollection<Integer> m=new MyCollection<Integer>(100);
         m.add(1);m.add(3);m.add(5);
         System.out.print(m.findMax());
         System.out.println(m.findMin());
     }
-    MyCollection (Class<E> c,int size) throws InstantiationException,IllegalAccessException{
+    MyCollection (int size) throws InstantiationException,IllegalAccessException{
         this.size=size;
-        inn= (E[])Array.newInstance(c,size);
+
     }
     private E[] inn=null;
     private int size=0;
@@ -28,6 +29,7 @@ public class MyCollection<E extends Comparable> implements Collection<E> {
 
         return this.size()==0;
     }
+
 
     public boolean makeEmpty(){
         return this.removeAll(this);
