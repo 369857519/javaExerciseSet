@@ -41,7 +41,7 @@ public class B_LinkedList<T> implements Iterable<T> {
     }
 
     public boolean add(int idx,T x)
-    {addBefore(getNode(idx),x);}
+    {addBefore(getNode(idx),x);return true;}
 
     public T get (int idx)
     {
@@ -54,6 +54,35 @@ public class B_LinkedList<T> implements Iterable<T> {
         T oldVal=p.data;
         p.data=newVal;
         return oldVal;
+    }
+
+    public boolean contains(T data)
+    {
+        Node<T> currentIt=beginMarker;
+        while (currentIt!=null){
+            if(currentIt.data==data){
+                return true;
+            }
+            currentIt=currentIt.next;
+        }
+        return false;
+    }
+
+    public boolean swap(int idx1,int idx2)
+    {
+        if(idx1>0&&idx1<size()&&idx2>0&&idx2<size()&&idx1==idx2-1)
+        {
+            Node<T> node1=getNode(idx1);
+            Node<T> node2=getNode(idx2);
+            node2.prev=node1.prev;
+            node2.prev.next=node2;
+            node1.next=node2.next;
+            node1.next.prev=node1;
+            node1.prev=node2;
+            node2.next=node1;
+            return true;
+        }
+        return false;
     }
 
     public T remove(int idx)
