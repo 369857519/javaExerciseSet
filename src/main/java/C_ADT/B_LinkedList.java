@@ -41,7 +41,9 @@ public class B_LinkedList<T> implements Iterable<T> {
     }
 
     public boolean add(int idx,T x)
-    {addBefore(getNode(idx),x);return true;}
+    {
+        addBefore(getNode(idx),x);
+        return true;}
 
     public T get (int idx)
     {
@@ -56,6 +58,15 @@ public class B_LinkedList<T> implements Iterable<T> {
         return oldVal;
     }
 
+    private void addBefore(Node<T> p,T x)
+    {
+        Node<T> newNode=new Node<T>(x,p.prev,p);
+        newNode.prev.next=newNode;
+        p.prev=newNode;
+        theSize++;
+        modCount++;
+    }
+
     public boolean contains(T data)
     {
         Node<T> currentIt=beginMarker;
@@ -67,7 +78,6 @@ public class B_LinkedList<T> implements Iterable<T> {
         }
         return false;
     }
-
     public boolean swap(int idx1,int idx2)
     {
         if(idx1>0&&idx1<size()&&idx2>0&&idx2<size()&&idx1==idx2-1)
@@ -90,14 +100,6 @@ public class B_LinkedList<T> implements Iterable<T> {
         return remove(getNode(idx));
     }
 
-    private void addBefore(Node<T> p,T x)
-    {
-        Node<T> newNode=new Node<T>(x,p.prev,p);
-        newNode.prev.next=newNode;
-        p.prev=newNode;
-        theSize++;
-        modCount++;
-    }
     private T remove(Node<T> p)
     {
         p.next.prev=p.prev;
@@ -134,10 +136,10 @@ public class B_LinkedList<T> implements Iterable<T> {
         return new LinkedListIterator();
     }
 
-    private int theSize;
-    private int modCount=0;
-    private Node<T> beginMarker;
-    private Node<T> endMarker;
+    public int theSize;
+    public int modCount=0;
+    public Node<T> beginMarker;
+    public Node<T> endMarker;
 
     private static class Node<T>
     {
@@ -161,13 +163,12 @@ public class B_LinkedList<T> implements Iterable<T> {
         public boolean hasNext() {
             return current!=endMarker;
         }
-
         public T next() {
             if(modCount!=expectedModCount)
                 throw new ConcurrentModificationException();
-            if(!hasNext())
-                throw new NoSuchElementException();
-
+            if(current==endMarker){
+                current=beginMarker.next;
+            }
             T nextItem=current.data;
             current=current.next;
             okToRemove=true;
@@ -179,6 +180,8 @@ public class B_LinkedList<T> implements Iterable<T> {
                 throw new ConcurrentModificationException();
             if(!okToRemove)
                 throw new IllegalStateException();
+            System.out.print(current.prev.data);
+
             B_LinkedList.this.remove(current.prev);
             okToRemove=false;
             expectedModCount++;
