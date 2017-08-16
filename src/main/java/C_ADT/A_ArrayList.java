@@ -1,7 +1,6 @@
 package C_ADT;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Created by qilianshan on 17/8/9.
@@ -81,14 +80,42 @@ public class A_ArrayList<T> implements Iterable<T> {
 
         theSize++;
     }
-
+    public void addAll(Iterable<? extends T> items)
+    {
+        for(T item:items)
+        {
+            add(item);
+        }
+    }
     public T remove(int idx)
     {
-        T removedItem=theItems[idx];
+         T removedItem=theItems[idx];
         for(int i=idx;i<size()-1;i++)
             theItems[i]=theItems[i+1];
         theSize--;
         return removedItem;
+    }
+    public void removeAll(Iterable<? extends T> items){
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        //o(n^2)
+        for(T item:items){
+            for(int i=0;i<theSize;i++)
+            {
+                if(this.get(i).equals(item)){
+                    list.add(i);
+                }
+            }
+        }
+        //去重o(n)
+        Set temSet=new HashSet(list);
+        list=new ArrayList<Integer>(temSet);
+        //排序o(n*lgn)
+        Collections.sort(list);
+
+        //o(n^2)
+        for(int i=list.size()-1;i>=0;i--){
+            this.remove(list.get(i));
+        }
     }
     public Iterator<T> iterator() {
         return new ArrayListIterator();

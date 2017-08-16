@@ -13,8 +13,10 @@ public class C_Sets {
     public static void main(String[] args){
 //        switchNode();
 //        intersection();
-        hotPotato(5,1);
+//        hotPotato(5,1);
+          myArrayListTest();
     }
+
 
     public static void switchNode(){
         B_LinkedList<Integer> bllist=new B_LinkedList<Integer>(){{
@@ -80,6 +82,39 @@ public class C_Sets {
                 count=0;
                 ite.remove();
             }
+        }
+    }
+    //3.7
+    //trimToSize的时候会重新分配一遍大小，耗时n
+    //然后又进行一次add，需要重新分配大小，耗时n
+    //一共是n*(n+n)=o(n^2)
+
+    //3.8
+    //a如果不记录，size会发生改变
+    //b o(n^2)
+    //c o(n^2)
+    //d 使用迭代器只能使linkedList的removeFirstHalf变快
+
+    public static void myArrayListTest()
+    {
+        final A_ArrayList<Integer> arr=new A_ArrayList<Integer>();
+        //addAll的操作时间复杂度为o(n)
+        arr.addAll(new ArrayList<Integer>(){{
+            add(1);add(3);add(5);add(7);add(9);
+        }});
+
+        for(int i:arr)
+        {
+            System.out.print(i);
+        }
+        //总体复杂度是o(n^2)
+        arr.removeAll(new ArrayList<Integer>(){{
+            add(1);add(3);add(3);
+        }});
+
+        for(int i:arr)
+        {
+            System.out.print(i);
         }
     }
 
