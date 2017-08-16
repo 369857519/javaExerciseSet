@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d8bc102-de96-4489-800e-7e30b09c05b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/A_ArrayList$ArrayListIterator.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/A_ArrayList$ArrayListIterator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/A_ArrayList.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/A_ArrayList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$1.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$2.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$3.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets.class" afterPath="$PROJECT_DIR$/out/production/javaExerciseSet/C_ADT/C_Sets.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" afterPath="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java" afterPath="$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -42,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="A_ArrayList.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="A_ArrayList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.740741">
-              <caret line="72" column="19" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.943074">
+              <caret line="148" column="26" selection-start-line="140" selection-start-column="10" selection-end-line="148" selection-end-column="26" />
               <folding>
                 <element signature="e#1992#2001#0" expanded="true" />
                 <element signature="e#2525#2526#0" expanded="true" />
@@ -96,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="C_Sets.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="C_Sets.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20892495">
+            <state vertical-scroll-proportion="0.0">
               <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -221,8 +214,8 @@
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/C_LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/CircularLinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java" />
+        <option value="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" />
       </list>
     </option>
   </component>
@@ -849,12 +842,12 @@
       <workItem from="1502680403541" duration="10058000" />
       <workItem from="1502764262856" duration="4612000" />
       <workItem from="1502848209134" duration="4917000" />
-      <workItem from="1502863862414" duration="4157000" />
+      <workItem from="1502863862414" duration="4664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130128000" />
+    <option name="totallyTimeSpent" value="130635000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1776" y="425" width="1080" height="985" extended-state="0" />
@@ -863,11 +856,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39907727" sideWeight="0.49710983" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39907727" sideWeight="0.49710983" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39932507" sideWeight="0.50289017" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1333,6 +1326,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1345,22 +1348,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.740741">
-          <caret line="72" column="19" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.943074">
+          <caret line="148" column="26" selection-start-line="140" selection-start-column="10" selection-end-line="148" selection-end-column="26" />
           <folding>
             <element signature="e#1992#2001#0" expanded="true" />
             <element signature="e#2525#2526#0" expanded="true" />
             <element signature="e#2571#2572#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20892495">
-          <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

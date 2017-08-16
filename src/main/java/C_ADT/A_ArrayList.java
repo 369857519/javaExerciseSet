@@ -138,4 +138,13 @@ public class A_ArrayList<T> implements Iterable<T> {
             A_ArrayList.this.remove(--current);
         }
     }
+//        boolean modified = false;
+//        Iterator<?> e = iterator();
+//           while (e.hasNext()) {
+//                if (c.contains(e.next())) {
+//                         e.remove();
+//                         modified = true;
+//                }
+//        }
+//        return modified;
 }
