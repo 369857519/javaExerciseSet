@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d8bc102-de96-4489-800e-7e30b09c05b8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/C_ADT/D_SingleList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" afterPath="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java" afterPath="$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,15 +37,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="A_ArrayList.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="A_ArrayList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.943074">
-              <caret line="148" column="26" selection-start-line="140" selection-start-column="10" selection-end-line="148" selection-end-column="26" />
+            <state vertical-scroll-proportion="-74.44444">
+              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding>
                 <element signature="e#1992#2001#0" expanded="true" />
                 <element signature="e#2525#2526#0" expanded="true" />
                 <element signature="e#2571#2572#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="D_SingleList.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/D_SingleList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7563177">
+              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#857#858#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Object.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="235" column="18" selection-start-line="235" selection-start-column="18" selection-end-line="235" selection-end-column="18" />
+              <folding>
+                <element signature="e#10180#10181#0" expanded="true" />
+                <element signature="e#10263#10264#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="27" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="27" />
+              <caret line="178" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,28 +131,6 @@
               <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Exponential.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/B_Analysis/Exponential.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuessLetter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/A_Introduction/GuessLetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -213,9 +226,10 @@
         <option value="$PROJECT_DIR$/src/main/java/A_Introduction/MyCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/C_LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/CircularLinkedList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/C_Sets.java" />
         <option value="$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/C_ADT/D_SingleList.java" />
       </list>
     </option>
   </component>
@@ -842,12 +856,12 @@
       <workItem from="1502680403541" duration="10058000" />
       <workItem from="1502764262856" duration="4612000" />
       <workItem from="1502848209134" duration="4917000" />
-      <workItem from="1502863862414" duration="4664000" />
+      <workItem from="1502863862414" duration="8684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130635000" />
+    <option name="totallyTimeSpent" value="134655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1776" y="425" width="1080" height="985" extended-state="0" />
@@ -941,20 +955,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/A_Introduction/PrintDouble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/A_Introduction/simpleCompile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="112" selection-start-line="19" selection-start-column="112" selection-end-line="19" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/compileExercise/output">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1336,24 +1336,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-74.44444">
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding>
+            <element signature="e#1992#2001#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2571#2572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/B_LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="27" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="27" />
+          <caret line="178" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/A_ArrayList.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.943074">
-          <caret line="148" column="26" selection-start-line="140" selection-start-column="10" selection-end-line="148" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="235" column="18" selection-start-line="235" selection-start-column="18" selection-end-line="235" selection-end-column="18" />
           <folding>
-            <element signature="e#1992#2001#0" expanded="true" />
-            <element signature="e#2525#2526#0" expanded="true" />
-            <element signature="e#2571#2572#0" expanded="true" />
+            <element signature="e#10180#10181#0" expanded="true" />
+            <element signature="e#10263#10264#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/C_ADT/D_SingleList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7563177">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
           </folding>
         </state>
       </provider>
