@@ -121,7 +121,24 @@ public class C_Sets {
     }
 
     private static void D_SingleListTest(){
-        D_SingleList<Integer> singleList=new D_SingleList<Integer>();
+        D_SingleList<Integer> singleList=new D_SingleList<Integer>(){{
+            add(1);add(3);add(5);add(6);add(13);
+        }};
+        System.out.println(singleList);
+
+        System.out.println(singleList.size());
+
+        System.out.println(singleList.contains(3));
+
+        singleList.addIfNotContains(10);
+        singleList.addIfNotContains(13);
+
+        System.out.println(singleList);
+
+        singleList.removeIfContains(10);
+        singleList.removeIfContains(13);
+
+        System.out.println(singleList);
     }
 
 }

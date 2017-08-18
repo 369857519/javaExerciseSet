@@ -24,12 +24,12 @@ public class D_SingleList<T> implements Iterable<T> {
         return theSize;
     }
 
-    private Node<T> getNodePrev(int idx){
+    private Node<T> getNode(int idx){
         Node<T> p;
         if(idx<0||idx>size())
             throw new IndexOutOfBoundsException();
 
-        p=beginMarker;
+        p=beginMarker.next;
         for(int i=0;i<idx;i++)
             p=p.next;
         return p;
@@ -63,7 +63,7 @@ public class D_SingleList<T> implements Iterable<T> {
     }
 
     public void add(int idx,T x){
-        addAfter(getNodePrev(idx),x);
+        addAfter(getNode(idx),x);
     }
 
     private void addAfter(Node<T> p,T x)
@@ -83,7 +83,7 @@ public class D_SingleList<T> implements Iterable<T> {
 
     public T remove(int idx)
     {
-        return remove(getNodePrev(idx));
+        return remove(getNode(idx));
     }
 
     public T remove(Node<T> p)
@@ -95,7 +95,7 @@ public class D_SingleList<T> implements Iterable<T> {
         return data;
     }
 
-    public Boolean ifContainsDelete(T d){
+    public Boolean removeIfContains(T d){
         if(contains(d)){
             Iterator<T> it=iterator();
             while(it.hasNext()){
