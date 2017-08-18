@@ -14,8 +14,10 @@ public class C_Sets {
 //        switchNode();
 //        intersection();
 //        hotPotato(5,1);
-          myArrayListTest();
+//          myArrayListTest();
+        D_SingleListTest();
     }
+
 
 
     public static void switchNode(){
@@ -116,6 +118,10 @@ public class C_Sets {
         {
             System.out.print(i);
         }
+    }
+
+    private static void D_SingleListTest(){
+        D_SingleList<Integer> singleList=new D_SingleList<Integer>();
     }
 
 }
