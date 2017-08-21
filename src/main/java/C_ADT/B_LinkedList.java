@@ -4,12 +4,17 @@ import com.sun.xml.internal.bind.AnyTypeAdapter;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
  * Created by qilianshan on 17/8/9.
  */
 public class B_LinkedList<T> implements Iterable<T> {
+    public int theSize;
+    public int modCount=0;
+    public Node<T> beginMarker;
+    public Node<T> endMarker;
 
     public B_LinkedList()
     {
@@ -136,11 +141,6 @@ public class B_LinkedList<T> implements Iterable<T> {
         return new LinkedListIterator();
     }
 
-    public int theSize;
-    public int modCount=0;
-    public Node<T> beginMarker;
-    public Node<T> endMarker;
-
     private static class Node<T>
     {
         public Node(T d,Node<T> p,Node<T> n)
@@ -166,6 +166,7 @@ public class B_LinkedList<T> implements Iterable<T> {
         public T next() {
             if(modCount!=expectedModCount)
                 throw new ConcurrentModificationException();
+            //变成循环链表
             if(current==endMarker){
                 current=beginMarker.next;
             }
@@ -180,11 +181,79 @@ public class B_LinkedList<T> implements Iterable<T> {
                 throw new ConcurrentModificationException();
             if(!okToRemove)
                 throw new IllegalStateException();
-            System.out.print(current.prev.data);
-
             B_LinkedList.this.remove(current.prev);
             okToRemove=false;
             expectedModCount++;
+        }
+    }
+
+    public ListIterator<T> listIterator()
+    {
+        return new LinkedListLIterator();
+    }
+
+    private class LinkedListLIterator implements ListIterator<T>{
+        private Node<T> current=beginMarker.next;
+        private int expectedCount=modCount;
+        private boolean okToRemove=false;
+        private int currentIndex=0;
+
+        public boolean hasNext() {
+            return currentIndex!=size();
+        }
+
+        public T next() {
+            if(modCount!=expectedCount)
+                throw new ConcurrentModificationException();
+            if(!hasNext())
+                throw new NoSuchElementException();
+            T nextItem=current.data;
+            current=current.next;
+            currentIndex++;
+            okToRemove=true;
+            return nextItem;
+        }
+
+        public boolean hasPrevious() {
+            return current!=beginMarker;
+        }
+
+        public T previous() {
+            if(modCount!=expectedCount)
+                throw new ConcurrentModificationException();
+            if(!hasPrevious())
+                throw new NoSuchElementException();
+            T prevItem=current.data;
+            current=current.prev;
+            currentIndex--;
+            okToRemove=true;
+            return prevItem;
+        }
+
+        public int nextIndex() {
+            return currentIndex;
+        }
+
+        public int previousIndex() {
+            return currentIndex-1;
+        }
+        //这个remove不太会
+        public void remove() {
+            if(modCount!=expectedCount)
+                throw new ConcurrentModificationException();
+            if(!okToRemove)
+                throw new IllegalStateException();
+            B_LinkedList.this.remove(current.prev);
+            okToRemove=false;
+            expectedCount++;
+        }
+
+        public void set(T t) {
+            current.data=t;
+        }
+
+        public void add(T t) {
+            B_LinkedList.this.addBefore(current,t);
         }
     }
 

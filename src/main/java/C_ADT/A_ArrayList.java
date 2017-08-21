@@ -138,14 +138,60 @@ public class A_ArrayList<T> implements Iterable<T> {
             A_ArrayList.this.remove(--current);
         }
     }
-//        boolean modified = false;
-//        Iterator<?> e = iterator();
-//           while (e.hasNext()) {
-//                if (c.contains(e.next())) {
-//                         e.remove();
-//                         modified = true;
-//                }
-//        }
-//        return modified;
+
+    public ListIterator<T> listIterator(){
+        return new ArrayListLIterator();
+    }
+
+    private class ArrayListLIterator implements ListIterator<T>
+    {
+        private int current=0;
+        public boolean hasNext() {
+            return current<size();
+        }
+
+        public T next() {
+            if(!hasNext())
+                throw new NoSuchElementException();
+            return theItems[current++];
+        }
+
+        public boolean hasPrevious() {
+            return theItems[current-1]!=null;
+        }
+
+        public T previous() {
+            if(!hasPrevious()){
+                throw new NoSuchElementException();
+            }
+            return theItems[current--];
+        }
+
+        public int nextIndex() {
+            if(!hasNext())
+                throw new NoSuchElementException();
+            return current+1;
+        }
+
+        public int previousIndex() {
+            if(!hasPrevious()){
+                throw new NoSuchElementException();
+            }
+            return current--;
+        }
+
+        public void remove() {
+            A_ArrayList.this.remove(current);
+        }
+
+        public void set(T t) {
+            A_ArrayList.this.set(current,t);
+        }
+
+        public void add(T t) {
+            A_ArrayList.this.add(t);
+        }
+    }
+
 
 }
