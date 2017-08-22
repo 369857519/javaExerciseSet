@@ -105,6 +105,40 @@ public class B_LinkedList<T> implements Iterable<T> {
         return remove(getNode(idx));
     }
 
+    public void splice(Iterator<T> itr,B_LinkedList<? extends T> lst)
+    {
+
+    }
+
+    public void addFirst(T t)
+    {
+        add(0,t);
+    }
+
+    public void addLst(T t)
+    {
+        add(size(),t);
+    }
+
+    public void removeFirst()
+    {
+        remove(0);
+    }
+
+    public void removeLast()
+    {
+        remove(size());
+    }
+
+    public void getFirst()
+    {
+        get(0);
+    }
+
+    public void getLast()
+    {
+        get(size());
+    }
     private T remove(Node<T> p)
     {
         p.next.prev=p.prev;
@@ -114,6 +148,8 @@ public class B_LinkedList<T> implements Iterable<T> {
 
         return p.data;
     }
+
+
 
     private Node<T> getNode(int idx)
     {

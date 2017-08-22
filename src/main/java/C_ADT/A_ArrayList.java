@@ -10,6 +10,7 @@ public class A_ArrayList<T> implements Iterable<T> {
 
     private int theSize;
     private T[] theItems;
+    private int modCount=0;
 
     public A_ArrayList()
     {
@@ -20,6 +21,7 @@ public class A_ArrayList<T> implements Iterable<T> {
     {
         theSize=0;
         ensureCapacity(DEFAULT_CAPACITY);
+        modCount++;
     }
 
     public int size(){
@@ -51,6 +53,7 @@ public class A_ArrayList<T> implements Iterable<T> {
         }
         T old=theItems[idx];
         theItems[idx]=newVal;
+        modCount++;
         return old;
     }
 
@@ -79,6 +82,7 @@ public class A_ArrayList<T> implements Iterable<T> {
         theItems[idx]=x;
 
         theSize++;
+        modCount++;
     }
     public void addAll(Iterable<? extends T> items)
     {
@@ -86,6 +90,7 @@ public class A_ArrayList<T> implements Iterable<T> {
         {
             add(item);
         }
+        modCount++;
     }
     public T remove(int idx)
     {
@@ -93,6 +98,7 @@ public class A_ArrayList<T> implements Iterable<T> {
         for(int i=idx;i<size()-1;i++)
             theItems[i]=theItems[i+1];
         theSize--;
+        modCount++;
         return removedItem;
     }
     public void removeAll(Iterable<? extends T> items){
@@ -116,26 +122,68 @@ public class A_ArrayList<T> implements Iterable<T> {
         for(int i=list.size()-1;i>=0;i--){
             this.remove(list.get(i));
         }
+
+        modCount++;
     }
+
+    public Iterator<T> reverseIterator(){
+        return new ArrayListReverseIterator();
+    }
+
+    private class ArrayListReverseIterator implements Iterator<T>
+    {
+        private int current=A_ArrayList.this.size()-1;
+
+        public boolean hasNext(){return current>0;}
+
+        public T next()
+        {
+            if(!hasNext())
+                throw new NoSuchElementException();
+            return theItems[current--];
+        }
+
+        public void remove(){A_ArrayList.this.remove(current);}
+    }
+
     public Iterator<T> iterator() {
         return new ArrayListIterator();
     }
     private class ArrayListIterator implements Iterator<T>
     {
         private int current=0;
+        private int lastRet=-1;
+        private int expectedModCount=modCount;
 
         public boolean hasNext() {
             return current<size();
         }
 
         public T next() {
+            checkForComodification();
             if(!hasNext())
                 throw new NoSuchElementException();
-            return theItems[current++];
+            lastRet=current;
+            return (T)theItems[current++];
         }
 
         public void remove() {
-            A_ArrayList.this.remove(--current);
+            if(lastRet<0)
+                throw new IllegalStateException();
+            checkForComodification();
+            try{
+                A_ArrayList.this.remove(lastRet);
+                lastRet=-1;
+                expectedModCount=modCount;
+            }catch (IndexOutOfBoundsException e) {
+                throw new ConcurrentModificationException();
+            }
+            expectedModCount++;
+        }
+
+        final void checkForComodification(){
+            if(modCount!=expectedModCount)
+                throw new ConcurrentModificationException();
         }
     }
 

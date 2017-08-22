@@ -14,8 +14,9 @@ public class C_Sets {
 //        switchNode();
 //        intersection();
 //        hotPotato(5,1);
-//          myArrayListTest();
-        D_SingleListTest();
+//        myArrayListTest();
+//        D_SingleListTest();
+          arrayListTest();
     }
 
 
@@ -139,6 +140,19 @@ public class C_Sets {
         singleList.removeIfContains(13);
 
         System.out.println(singleList);
+    }
+
+    private static void arrayListTest(){
+        A_ArrayList<Integer> arr=new A_ArrayList<Integer>(){{
+            add(1);
+            add(2);
+            add(3);
+        }};
+        Iterator<Integer> itr= arr.iterator();
+        itr.remove();
+        Iterator<Integer> ritr=arr.reverseIterator();
+        ritr.next();
+        ritr.remove();
     }
 
 }
