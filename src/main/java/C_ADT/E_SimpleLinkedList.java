@@ -8,19 +8,29 @@ import java.util.Iterator;
  */
 public class E_SimpleLinkedList<T> implements Iterable<T> {
 
-    ublic int theSize;
+    public int theSize;
     public int modCount=0;
-    public Node<T> entry=null;
+    public Node<T> beginMarker;
+    public Node<T> endMarker;
 
     public E_SimpleLinkedList()
     {
-        clear();
+        beginMarker=null;
+        endMarker=null;
+        theSize=0;
+        modCount++;
     }
 
-    public void clear()
+    public E_SimpleLinkedList(T t)
     {
-        entry=null;
-        theSize=0;
+        clear(t);
+    }
+
+    public void clear(T t)
+    {
+        beginMarker=new Node<T>(t,null,null);
+        endMarker=beginMarker;
+        theSize=1;
         modCount++;
     }
 
@@ -36,7 +46,12 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
 
     public boolean add(T x)
     {
-        add(size(),x);return true;
+        if(size()==0){
+            clear(x);
+        }else{
+            add(size()+1,x);
+        }
+        return true;
     }
 
     public boolean add(int idx,T x)
@@ -59,9 +74,22 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
 
     private void addBefore(Node<T> p,T x)
     {
-        Node<T> newNode=new Node<T>(x,p.prev,p);
-        newNode.prev.next=newNode;
-        p.prev=newNode;
+        Node<T> newNode;
+        //如果插的位置是尾节点
+        if(p==null){
+            newNode=new Node<T>(x,endMarker,null);
+            newNode.prev.next=newNode;
+            endMarker=newNode;
+        }else if(p==beginMarker){
+            //如果插的是头节点
+            newNode=new Node<T>(x,p.prev,p);
+            newNode.next.prev=newNode;
+            beginMarker=newNode;
+        }else{
+            newNode=new Node<T>(x,p.prev,p);
+            newNode.prev.next=newNode;
+            p.prev=newNode;
+        }
         theSize++;
         modCount++;
     }
@@ -80,8 +108,13 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
 
     private T remove(Node<T> p)
     {
-        p.next.prev=p.prev;
-        p.prev.next=p.next;
+        if(theSize==1){
+            beginMarker=endMarker=null;
+        }
+        if(p.next!=null) p.next.prev=p.prev;
+        else endMarker=p.prev;
+        if(p.prev!=null) p.prev.next=p.next;
+        else beginMarker=p.next;
         theSize--;
         modCount++;
 
@@ -94,11 +127,11 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
     {
         Node<T> p;
         if(idx<0||idx>size())
-            throw new IndexOutOfBoundsException();
+            return null;
 
         if(idx<size()/2)
         {
-            p=beginMarker.next;
+            p=beginMarker;
             for(int i=0;i<idx;i++)
                 p=p.next;
         }
@@ -128,21 +161,37 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
         public Node<T> next;
     }
 
+    public String toString(){
+        Iterator<T> it=iterator();
+        String str="";
+        while (it.hasNext())
+        {
+            str+=it.next().toString();
+        }
+
+        return str;
+    }
+
     private class LinkedListIterator implements Iterator<T>
     {
-        private Node<T> current=beginMarker.next;
+        private Node<T> current=beginMarker;
         private int expectedModCount=modCount;
         private boolean okToRemove=false;
 
+        public LinkedListIterator(){
+            if(beginMarker!=null){
+                okToRemove=true;
+            }
+        }
+
         public boolean hasNext() {
-            return current!=endMarker;
+            return current!=null;
         }
         public T next() {
             if(modCount!=expectedModCount)
                 throw new ConcurrentModificationException();
-            //变成循环链表
-            if(current==endMarker){
-                current=beginMarker.next;
+            if(current==null){
+                throw new IndexOutOfBoundsException();
             }
             T nextItem=current.data;
             current=current.next;
@@ -155,7 +204,7 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
                 throw new ConcurrentModificationException();
             if(!okToRemove)
                 throw new IllegalStateException();
-            E_SimpleLinkedList.this.remove(current.prev);
+            E_SimpleLinkedList.this.remove(current);
             okToRemove=false;
             expectedModCount++;
         }

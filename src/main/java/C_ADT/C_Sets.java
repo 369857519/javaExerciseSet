@@ -143,16 +143,19 @@ public class C_Sets {
     }
 
     private static void arrayListTest(){
-        A_ArrayList<Integer> arr=new A_ArrayList<Integer>(){{
+        E_SimpleLinkedList<Integer> arr=new E_SimpleLinkedList<Integer>(){{
             add(1);
             add(2);
             add(3);
         }};
+        System.out.println(arr);
         Iterator<Integer> itr= arr.iterator();
+        itr.next();
+        itr.next();
+        itr.next();
         itr.remove();
-        Iterator<Integer> ritr=arr.reverseIterator();
-        ritr.next();
-        ritr.remove();
+        System.out.println(arr);
+
     }
 
 }
