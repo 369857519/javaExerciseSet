@@ -121,7 +121,12 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
         return p.data;
     }
 
-
+    public T lazyRemove(Node<T> p)
+    {
+        p.deleted=true;
+        theSize--;
+        return p.data;
+    }
 
     private Node<T> getNode(int idx)
     {
@@ -155,10 +160,15 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
             data=d;
             prev=p;
             next=n;
+            deleted=false;
         }
         public T data;
         public Node<T> prev;
         public Node<T> next;
+        public boolean deleted;
+        public String toString(){
+            return data.toString();
+        }
     }
 
     public String toString(){
@@ -185,6 +195,17 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
         }
 
         public boolean hasNext() {
+            if(current!=null){
+                //如果下一个存在,则进行遍历
+                while (current.deleted){
+                    if(current.next==null){
+                        return !current.deleted;
+                    }
+                    current=current.next;
+                    //直到遍历到最后一个
+                }
+            }
+
             return current!=null;
         }
         public T next() {
@@ -193,8 +214,12 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
             if(current==null){
                 throw new IndexOutOfBoundsException();
             }
+
             T nextItem=current.data;
             current=current.next;
+            if(current!=null){
+                if(current.deleted)next();
+            }
             okToRemove=true;
             return nextItem;
         }
@@ -204,7 +229,10 @@ public class E_SimpleLinkedList<T> implements Iterable<T> {
                 throw new ConcurrentModificationException();
             if(!okToRemove)
                 throw new IllegalStateException();
-            E_SimpleLinkedList.this.remove(current);
+            if(current==null){
+                throw new IndexOutOfBoundsException();
+            }
+            E_SimpleLinkedList.this.lazyRemove(current);
             okToRemove=false;
             expectedModCount++;
         }

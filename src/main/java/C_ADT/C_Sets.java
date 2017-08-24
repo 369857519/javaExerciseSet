@@ -151,11 +151,13 @@ public class C_Sets {
         System.out.println(arr);
         Iterator<Integer> itr= arr.iterator();
         itr.next();
-        itr.next();
-        itr.next();
         itr.remove();
         System.out.println(arr);
 
+    }
+
+    private static void lazyDelete(){
+        //懒惰删除优点在于删除本身的操作复杂度降低，而且在数据较少时，可以进行数据恢复，但是遍历时复杂度增加
     }
 
 }
