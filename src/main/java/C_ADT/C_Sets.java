@@ -1,9 +1,9 @@
 package C_ADT;
 
+import javax.swing.text.StyledEditorKit;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * Created by qilianshan on 17/8/14.
@@ -11,13 +11,17 @@ import java.util.LinkedList;
 public class C_Sets {
 
     public static void main(String[] args){
-//        switchNode();
-//        intersection();
-//        hotPotato(5,1);
-//        myArrayListTest();
-//        D_SingleListTest();
-          arrayListTest();
+//      switchNode();
+//      intersection();
+//      hotPotato(5,1);
+//      myArrayListTest();
+//      D_SingleListTest();
+//      arrayListTest();
+//        System.out.println(testLegalSquence("()()("));
+//        System.out.println(testLegalSquence("{}(({{}}))"));
+
     }
+
 
 
 
@@ -156,8 +160,59 @@ public class C_Sets {
 
     }
 
-    private static void lazyDelete(){
-        //懒惰删除优点在于删除本身的操作复杂度降低，而且在数据较少时，可以进行数据恢复，但是遍历时复杂度增加
+    public static boolean testLegalSquence(String str){
+        Stack<Character> stk=new Stack<Character>();
+        Map<Character,Character> map=new HashMap<Character, Character>(){{
+            put('}','{');put(']','[');put(')','(');
+        }};
+        stk.push(str.charAt(0));
+        for(int i=1;i<str.length();i++)
+        {
+            if(stk.size()!=0&&map.get(str.charAt(i))==stk.lastElement()){
+                stk.pop();
+            }else{
+                stk.push(str.charAt(i));
+            }
+        }
+        return stk.size()==0;
+    }
+
+    public static int calPrefixExpression(String[] str){
+        int result=0;
+        Set<Character> set=new TreeSet<Character>(){{
+            add('+');
+            add('-');
+            add('*');
+            add('/');
+        }};
+        Stack<String> stk=new Stack<String>();
+        for(int i=stk.size()-1;i>=0;i++){
+            if(set.contains(str[i])&&str[i].length()==1){
+                switch (str[i].charAt(0)){
+                    case '+':
+                        result=Integer.parseInt(stk.pop())+Integer.parseInt(stk.pop());
+                        stk.push(String.valueOf(result));
+                        break;
+                    case '-':
+                        result=Integer.parseInt(stk.pop())-Integer.parseInt(stk.pop());
+                        stk.push(String.valueOf(result));
+                        break;
+                    case '*':
+                        result=Integer.parseInt(stk.pop())*Integer.parseInt(stk.pop());
+                        stk.push(String.valueOf(result));
+                        break;
+                    case '/':
+                        result=Integer.parseInt(stk.pop())/Integer.parseInt(stk.pop());
+                        stk.push(String.valueOf(result));
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+                stk.push(str[i]);
+            }
+        }
+        return result;
     }
 
 }
