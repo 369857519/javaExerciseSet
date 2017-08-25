@@ -19,7 +19,7 @@ public class C_Sets {
 //      arrayListTest();
 //        System.out.println(testLegalSquence("()()("));
 //        System.out.println(testLegalSquence("{}(({{}}))"));
-
+        System.out.println(calSufixExpression(new String[]{"3","4","+","5","*","6","-"}));
     }
 
 
@@ -177,16 +177,17 @@ public class C_Sets {
         return stk.size()==0;
     }
 
-    public static int calPrefixExpression(String[] str){
+    public static int calSufixExpression(String[] str){
         int result=0;
-        Set<Character> set=new TreeSet<Character>(){{
-            add('+');
-            add('-');
-            add('*');
-            add('/');
+        Set<String> set=new TreeSet<String>(){{
+            add("+");
+            add("-");
+            add("*");
+            add("/");
         }};
         Stack<String> stk=new Stack<String>();
-        for(int i=stk.size()-1;i>=0;i++){
+        int temp=0;
+        for(int i=0;i<str.length;i++){
             if(set.contains(str[i])&&str[i].length()==1){
                 switch (str[i].charAt(0)){
                     case '+':
@@ -194,7 +195,8 @@ public class C_Sets {
                         stk.push(String.valueOf(result));
                         break;
                     case '-':
-                        result=Integer.parseInt(stk.pop())-Integer.parseInt(stk.pop());
+                        temp=Integer.parseInt(stk.pop());
+                        result=Integer.parseInt(stk.pop())-temp;
                         stk.push(String.valueOf(result));
                         break;
                     case '*':
@@ -202,7 +204,8 @@ public class C_Sets {
                         stk.push(String.valueOf(result));
                         break;
                     case '/':
-                        result=Integer.parseInt(stk.pop())/Integer.parseInt(stk.pop());
+                        temp=Integer.parseInt(stk.pop());
+                        result=Integer.parseInt(stk.pop())/temp;
                         stk.push(String.valueOf(result));
                         break;
                     default:
