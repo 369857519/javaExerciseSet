@@ -19,7 +19,8 @@ public class C_Sets {
 //      arrayListTest();
 //        System.out.println(testLegalSquence("()()("));
 //        System.out.println(testLegalSquence("{}(({{}}))"));
-        System.out.println(calSufixExpression(new String[]{"3","4","+","5","*","6","-"}));
+//        System.out.println(calSufixExpression(new String[]{"3","4","+","5","*","6","-"}));
+        System.out.println(calSufixExpression(infixToSufix(new String[]{"(","3","^","2","+","4",")","*","5","-","6"})));
     }
 
 
@@ -184,10 +185,11 @@ public class C_Sets {
             add("-");
             add("*");
             add("/");
+            add("^");
         }};
         Stack<String> stk=new Stack<String>();
         int temp=0;
-        for(int i=0;i<str.length;i++){
+        for(int i=0;str[i]!=null;i++){
             if(set.contains(str[i])&&str[i].length()==1){
                 switch (str[i].charAt(0)){
                     case '+':
@@ -208,6 +210,11 @@ public class C_Sets {
                         result=Integer.parseInt(stk.pop())/temp;
                         stk.push(String.valueOf(result));
                         break;
+                    case '^':
+                        temp=Integer.parseInt(stk.pop());
+                        result=(int)Math.pow(Integer.parseInt(stk.pop()),temp);
+                        stk.push(String.valueOf(result));
+                        break;
                     default:
                         break;
                 }
@@ -216,6 +223,43 @@ public class C_Sets {
             }
         }
         return result;
+    }
+
+    public static String[] infixToSufix (String[] str){
+        String[] result=new String[100];
+        //使用优先级队列来存储优先级
+        Map<String,Integer> prior=new HashMap<String, Integer>(){{
+           put("^",3);put("*",2);put("/",2);put("+",1);put("-",1);
+        }};
+        Stack<String> resultStk=new Stack<String>();
+        Stack<String> symbolStk=new Stack<String>();
+        for(String i:str){
+            if(i=="("){
+                symbolStk.push(i);
+            }else if(i==")"){
+                String temp=symbolStk.pop();
+                while(temp!="("&&temp!=null){
+                    resultStk.push(temp);
+                    temp=symbolStk.pop();
+                }
+            }else if(prior.get(i)==null){
+                //如果是数字
+                resultStk.push(i);
+            }else{
+                //如果是符号
+                //比较优先级
+                while(symbolStk.size()!=0
+                        &&symbolStk.lastElement()!="("
+                        &&prior.get(i)<=prior.get(symbolStk.lastElement())){
+                        resultStk.push(symbolStk.pop());
+                }
+                symbolStk.push(i);
+            }
+        }
+        while (symbolStk.size()!=0){
+            resultStk.push(symbolStk.pop());
+        }
+        return resultStk.toArray(result);
     }
 
 }
