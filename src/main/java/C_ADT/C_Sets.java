@@ -24,9 +24,9 @@ public class C_Sets {
         H_SelfAdjust<Integer> self=new H_SelfAdjust<Integer>(){{
             add(1);add(2);add(3);add(4);
         }};
-
-        self.find(3);
-
+//
+//        self.find(3);
+//
         System.out.println(self);
     }
 

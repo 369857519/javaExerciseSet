@@ -6,7 +6,7 @@ package C_ADT;
 public class H_SelfAdjust<T> {
     private Node<T> beginMarker;
     private int modeCount=0;
-    private int size;
+    private int thisSize;
 
     public H_SelfAdjust(){
         clear();
@@ -14,7 +14,7 @@ public class H_SelfAdjust<T> {
 
     private void clear(){
         beginMarker=new Node<T>(null,null,null);
-        size=0;
+        thisSize=0;
         modeCount++;
     }
     //find
@@ -41,7 +41,7 @@ public class H_SelfAdjust<T> {
         Node<T> newBegin=new Node<T>(null,null,beginMarker);
         beginMarker.prev=newBegin;
         beginMarker=newBegin;
-        this.size++;
+        this.thisSize++;
         modeCount++;
         return true;
     }
@@ -49,11 +49,12 @@ public class H_SelfAdjust<T> {
     public String toString()
     {
         String str="";
-        Node<T> current=beginMarker;
-        while (current.next!=null){
-            str=str+current.next.data+',';
+        Node<T> current=beginMarker.next;
+        while (current!=null){
+            str=str+current.data+',';
+            current=current.next;
         }
-        str=str.substring(0,str.length()-2);
+        str=str.substring(0,str.length()-1);
         return str;
     }
 
