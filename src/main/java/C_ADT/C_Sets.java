@@ -20,11 +20,15 @@ public class C_Sets {
 //        System.out.println(testLegalSquence("()()("));
 //        System.out.println(testLegalSquence("{}(({{}}))"));
 //        System.out.println(calSufixExpression(new String[]{"3","4","+","5","*","6","-"}));
-        System.out.println(calSufixExpression(infixToSufix(new String[]{"(","3","^","2","+","4",")","*","5","-","6"})));
+//        System.out.println(calSufixExpression(infixToSufix(new String[]{"(","3","^","2","+","4",")","*","5","-","6"})));
+        H_SelfAdjust<Integer> self=new H_SelfAdjust<Integer>(){{
+            add(1);add(2);add(3);add(4);
+        }};
+
+        self.find(3);
+
+        System.out.println(self);
     }
-
-
-
 
     public static void switchNode(){
         B_LinkedList<Integer> bllist=new B_LinkedList<Integer>(){{
