@@ -21,13 +21,31 @@ public class C_Sets {
 //        System.out.println(testLegalSquence("{}(({{}}))"));
 //        System.out.println(calSufixExpression(new String[]{"3","4","+","5","*","6","-"}));
 //        System.out.println(calSufixExpression(infixToSufix(new String[]{"(","3","^","2","+","4",")","*","5","-","6"})));
-        H_SelfAdjust<Integer> self=new H_SelfAdjust<Integer>(){{
-            add(1);add(2);add(3);add(4);
-        }};
+//        H_SelfAdjust<Integer> self=new H_SelfAdjust<Integer>(){{
+//            add(1);add(2);add(3);add(4);
+//        }};
 //
 //        self.find(3);
 //
-        System.out.println(self);
+//        System.out.println(self);
+
+//        I_Stack<Integer> stk=new I_Stack<Integer>(){{
+//            push(1);push(2);push(3);
+//        }};
+//        System.out.println(stk);
+//        stk.pop();
+//        System.out.println(stk);
+
+        J_CirArray<Integer> j_cirArray=new J_CirArray<Integer>();
+        j_cirArray.enqueue(1);
+        j_cirArray.enqueue(2);
+        j_cirArray.enqueue(3);
+        j_cirArray.dequeue();
+        j_cirArray.enqueue(2);
+        j_cirArray.dequeue();
+        j_cirArray.dequeue();
+        j_cirArray.enqueue(4);
+        System.out.println(j_cirArray);
     }
 
     public static void switchNode(){
@@ -265,5 +283,14 @@ public class C_Sets {
         }
         return resultStk.toArray(result);
     }
+
+    //3.34 循环并将节点全部放进hash表
+
+    //3.35
+
+    //3.36 增加标志位即可
+
+    //3.37 迭代器迭代时，直接记录两个值，一个是当前节点，一个是前一个节点
+
 
 }
