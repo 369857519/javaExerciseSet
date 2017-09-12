@@ -1,5 +1,7 @@
 package D_Tree;
 
+import java.util.Iterator;
+
 /**
  * Created by qilianshan on 17/9/7.
  */
@@ -12,6 +14,20 @@ public class A_Sets {
     //4.8 前缀 -**ab+cde
     //      中缀 (a*b)*(c+d)-c 后缀 ab*cd+*e-
     //4.9 remove算法：找到右子树最小节点替换，然后移除右子树的节点（递归）
+    public static void main(String[] args)
+    {
+        B_TreeSet<Integer> treeSet=new B_TreeSet<Integer>(){{
+            insert(3);
+            insert(22);
+            insert(5);
+            insert(13);
+        }};
 
+        Iterator<Integer> ite=treeSet.iterator();
+        System.out.print(ite.next());
+        System.out.print(ite.next());
+        System.out.print(ite.next());
+        System.out.print(ite.next());
+    }
 
 }
