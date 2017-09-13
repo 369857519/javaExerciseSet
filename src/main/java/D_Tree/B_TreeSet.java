@@ -21,6 +21,7 @@ public class B_TreeSet<T> extends AbstractSet<T> {
     }
 
     //可以声明一个泛型comparator，其中comparator中的类型是T的超类
+
     public B_TreeSet(Comparator<? super T> c)
     {
         root=null;cmp=c;size=0;
@@ -29,6 +30,8 @@ public class B_TreeSet<T> extends AbstractSet<T> {
     private int myCompare(T lhs,T rhs)
     {
         if(cmp!=null)
+            //在这里可以看到comparator的使用，由于使用的是cmp，cmp一定会约束传入值是comparator中?的子类，
+            //所以构造函数在接受comparator时，要求comparator内必须是super于T的
             return cmp.compare(lhs,rhs);
         else
             return ((Comparable)lhs).compareTo(rhs);
@@ -57,12 +60,6 @@ public class B_TreeSet<T> extends AbstractSet<T> {
             node.left=insert(Element,node.left,node);
         }
         return t;
-    }
-
-    public void getNode(BinaryNode<T> node){
-        getNode(node.left);
-        //next()
-            getNode(node.right);
     }
 
     @Override
@@ -116,6 +113,10 @@ public class B_TreeSet<T> extends AbstractSet<T> {
         BinaryNode<T> left;
         BinaryNode<T> right;
         BinaryNode<T> parent;
+        //找到剩下的元素中最大的元素
+        //找到剩下的元素中，最小的元素
+        BinaryNode<T> nextMin;
+        BinaryNode<T> nextMax;
         BinaryNode(T Element)
         {
             this(Element,null,null,null);
@@ -126,6 +127,17 @@ public class B_TreeSet<T> extends AbstractSet<T> {
             left=lt;
             right=rt;
             parent=pt;
+            //最大
+            BinaryNode p=this;
+            while(p!=null){
+                p=p.parent;
+            }
+            while (p!=null){
+                p=p.right;
+            }
+            this.nextMax=p;
+            //下一个最小的位置
+            this.nextMin=parent;
         }
     }
 

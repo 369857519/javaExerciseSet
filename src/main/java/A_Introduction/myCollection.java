@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  * Created by qilianshan on 17/7/26.
  */
-public class MyCollection<E extends Comparable> implements Collection<E> {
+public class MyCollection<E> implements Collection<E> {
     public static void main(String[] args) throws InstantiationException,IllegalAccessException{
         MyCollection<Integer> m=new MyCollection<Integer>(100);
         m.add(1);m.add(3);m.add(5);
@@ -45,7 +45,7 @@ public class MyCollection<E extends Comparable> implements Collection<E> {
         }
         E minElem=inn[0];
         for(int i=1;i<this.size;i++){
-            if(inn[i].compareTo(minElem)>0){
+            if(((Comparable)inn[i]).compareTo(minElem)>0){
                 minElem=inn[i];
             }
         }
@@ -58,7 +58,7 @@ public class MyCollection<E extends Comparable> implements Collection<E> {
         }
         E maxElem=inn[0];
         for(int i=0;i<this.size;i++){
-            if(inn[i].compareTo(maxElem)<0){
+            if(((Comparable)inn[i]).compareTo(maxElem)<0){
                 maxElem=inn[i];
             }
         }
