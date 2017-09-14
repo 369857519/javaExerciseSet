@@ -1,9 +1,6 @@
 package D_Tree;
 
-import java.util.AbstractSet;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by qilianshan on 17/9/7.
@@ -60,6 +57,54 @@ public class B_TreeSet<T> extends AbstractSet<T> {
             node.left=insert(Element,node.left,node);
         }
         return t;
+    }
+
+    public boolean remove(Object Element)
+    {
+        if(root==null)
+        {
+            throw new NoSuchElementException();
+        }
+        removeAndRightForSubstitution((T) Element, root);
+        return true;
+    }
+
+    private BinaryNode<T> removeAndRightForSubstitution(T Element,BinaryNode<T> root)
+    {
+        BinaryNode<T> Ele=getNode(Element,root);
+        if(Ele.right!=null){
+            Ele.element=max(Ele.right);
+            return removeAndRightForSubstitution(Ele.element, Ele.right);
+        }else{
+            root=Ele.left;
+        }
+        return Ele;
+    }
+
+    private BinaryNode<T> getNode(T Element,BinaryNode<T> root)
+    {
+
+        if(root.element==Element){
+            return root;
+        }else{
+            root=null;
+            BinaryNode<T> left=getNode(Element,root.left);
+            if(left!=null){
+                root=left;
+            }
+            BinaryNode<T> right=getNode(Element,root.right);
+            if(right!=null){
+                root=right;
+            }
+        }
+        return root;
+    }
+
+    private T max(BinaryNode<T> node){
+        while (node!=null){
+            node=node.right;
+        }
+        return node.element;
     }
 
     @Override
