@@ -72,13 +72,27 @@ public class B_TreeSet<T> extends AbstractSet<T> {
     private BinaryNode<T> removeAndRightForSubstitution(T Element,BinaryNode<T> root)
     {
         BinaryNode<T> Ele=getNode(Element,root);
-        if(Ele.right!=null){
+        if(Ele==root){
+            root=Ele.left;
+            size--;
+        }else if(Ele.right!=null){
             Ele.element=max(Ele.right);
             return removeAndRightForSubstitution(Ele.element, Ele.right);
         }else{
-            root=Ele.left;
+            Ele.parent.left=Ele.left;
         }
         return Ele;
+    }
+
+    public String printTree()
+    {
+        Iterator<T> it=this.iterator();
+        String str="";
+        while (it.hasNext())
+        {
+            str=str+it.next()+' ';
+        }
+        return str;
     }
 
     private BinaryNode<T> getNode(T Element,BinaryNode<T> root)

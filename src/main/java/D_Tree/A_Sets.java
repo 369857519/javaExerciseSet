@@ -21,13 +21,21 @@ public class A_Sets {
             insert(22);
             insert(5);
             insert(13);
+            insert(14);
+            insert(6);
+            insert(8);
+            insert(21);
+            insert(10);
         }};
 
-        Iterator<Integer> ite=treeSet.iterator();
-        System.out.print(ite.next());
-        System.out.print(ite.next());
-        System.out.print(ite.next());
-        System.out.print(ite.next());
+        System.out.println(treeSet.printTree());
+
+        treeSet.remove(3);
+
+        System.out.println(treeSet.printTree());
+
+
+
     }
 
 }
