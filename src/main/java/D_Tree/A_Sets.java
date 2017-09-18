@@ -30,7 +30,7 @@ public class A_Sets {
 
         System.out.println(treeSet.printTree());
 
-        treeSet.remove(3);
+        treeSet.remove(8);
 
         System.out.println(treeSet.printTree());
 

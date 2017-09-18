@@ -5,21 +5,21 @@ import java.util.*;
 /**
  * Created by qilianshan on 17/9/7.
  */
-public class B_TreeSet<T> extends AbstractSet<T> {
+public class D_LazyTree<T> extends AbstractSet<T> {
     private BinaryNode root;
 
     private int size;
 
     private Comparator<? super T> cmp;
 
-    public B_TreeSet()
+    public D_LazyTree()
     {
         this(null);
     }
 
     //可以声明一个泛型comparator，其中comparator中的类型是T的超类
 
-    public B_TreeSet(Comparator<? super T> c)
+    public D_LazyTree(Comparator<? super T> c)
     {
         root=null;cmp=c;size=0;
     }
