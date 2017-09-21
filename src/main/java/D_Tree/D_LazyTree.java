@@ -1,5 +1,7 @@
 package D_Tree;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.*;
 
 /**
@@ -65,105 +67,24 @@ public class D_LazyTree<T> extends AbstractSet<T> {
         {
             throw new NoSuchElementException();
         }
-        root=removeL((T) Element, root);
+        root=removeM((T) Element, root);
         return true;
     }
 
-    private BinaryNode<T> removeR(T x,BinaryNode<T> t)
+    private BinaryNode<T> removeM(T x,BinaryNode<T> t)
     {
         if(t==null)
             return t;
         int compareResult=myCompare(x, t.element);
 
         if(compareResult<0)
-            t.left=removeR(x, t.left);
+            t.left=removeM(x, t.left);
         else if(compareResult>0)
-            t.right=removeR(x, t.right);
-        else if(t.left!=null && t.right!=null)
-        {
+            t.right=removeM(x, t.right);
+        else{
             //如果左右子树都不为零，在右子树中找到最小的节点替换上来，然后将右子树的对应节点删除
-            t.element=findMin(t.right).element;
-            t.right=removeR(t.element, t.right);
+            t.deleted=true;
         }
-        else
-            //一个子节点的情况下，有左用做，有右用右
-            t=(t.left!=null)?t.left:t.right;
-        return t;
-    }
-
-    private BinaryNode<T> removeL(T x,BinaryNode<T> t)
-    {
-        if(t==null)
-            return t;
-        int compareResult=myCompare(x,t.element);
-
-        if(compareResult<0)
-            t.left=removeL(x, t.left);
-        else if(compareResult>0)
-            t.right=removeL(x, t.right);
-        else if(t.left!=null && t.right!=null)
-        {
-            //如果左右子树都不为零，在右子树中找到最小的节点替换上来，然后将右子树的对应节点删除
-            t.element=findMax(t.left).element;
-            t.left=removeL(t.element, t.left);
-        }
-        else
-            //一个子节点的情况下，有左用做，有右用右
-            t=(t.left!=null)?t.left:t.right;
-        return t;
-    }
-
-    private BinaryNode<T> removeLRR(T x,BinaryNode<T> t,boolean leftOrRight)
-    {
-        if(t==null)
-            return t;
-        int compareResult=myCompare(x,t.element);
-
-        if(compareResult<0)
-            t.left=removeLRR(x, t.left,!leftOrRight);
-        else if(compareResult>0)
-            t.right=removeLRR(x, t.right,!leftOrRight);
-        else if(t.left!=null && t.right!=null)
-        {
-            if(leftOrRight){
-                t.element=findMax(t.left).element;
-                t.left=removeLRR(t.element,t.left,!leftOrRight);
-            }else{
-                t.element=findMin(t.right).element;
-                t.right=removeLRR(t.element,t.right,!leftOrRight);
-            }
-            //如果左右子树都不为零，在右子树中找到最小的节点替换上来，然后将右子树的对应节点删除
-
-        }
-        else
-            //一个子节点的情况下，有左用做，有右用右
-            t=(t.left!=null)?t.left:t.right;
-        return t;
-    }
-
-    private BinaryNode<T> removeLRA(T x,BinaryNode<T> t)
-    {
-        if(t==null)
-            return t;
-        int compareResult=myCompare(x,t.element);
-
-        if(compareResult<0)
-            t.left=removeLRA(x, t.left);
-        else if(compareResult>0)
-            t.right=removeLRA(x, t.right);
-        else if(t.left!=null && t.right!=null)
-        {
-            if(Math.random()>=0.5){
-                t.element=findMax(t.left).element;
-                t.left=removeLRA(t.element,t.left);
-            }else{
-                t.element=findMin(t.right).element;
-                t.right=removeLRA(t.element,t.right);
-            }
-        }
-        else
-            //一个子节点的情况下，有左用做，有右用右
-            t=(t.left!=null)?t.left:t.right;
         return t;
     }
 
@@ -206,8 +127,13 @@ public class D_LazyTree<T> extends AbstractSet<T> {
 
     private BinaryNode<T> findMax(BinaryNode<T> t){
         if(t!=null)
-            while(t.right!=null)
-                t=t.right;
+            while(t.right!=null){
+                if(t.right.deleted){
+
+                }else{
+                    t=t.right;
+                }
+            }
         return t;
     }
 
@@ -235,11 +161,14 @@ public class D_LazyTree<T> extends AbstractSet<T> {
         public T next() {
             BinaryNode<T> n=s.pop();
             T res=n.element;
+            currentNode=n;
             if(n.right!=null)
             {
                 n=n.right;
                 while (n!=null){
-                    s.push(n);
+                    if(!n.deleted){
+                        s.push(n);
+                    }
                     n=n.left;
                 }
             }
@@ -247,7 +176,7 @@ public class D_LazyTree<T> extends AbstractSet<T> {
         }
 
         public void remove() {
-
+            D_LazyTree.this.remove(currentNode.element);
         }
     }
 
@@ -262,10 +191,7 @@ public class D_LazyTree<T> extends AbstractSet<T> {
         BinaryNode<T> left;
         BinaryNode<T> right;
         BinaryNode<T> parent;
-        //找到剩下的元素中最大的元素
-        //找到剩下的元素中，最小的元素
-        BinaryNode<T> nextMin;
-        BinaryNode<T> nextMax;
+        Boolean deleted=false;
         BinaryNode(T Element)
         {
             this(Element,null,null,null);
@@ -284,9 +210,6 @@ public class D_LazyTree<T> extends AbstractSet<T> {
             while (p!=null){
                 p=p.right;
             }
-            this.nextMax=p;
-            //下一个最小的位置
-            this.nextMin=parent;
         }
     }
 
