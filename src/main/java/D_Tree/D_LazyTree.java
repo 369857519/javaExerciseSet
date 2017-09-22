@@ -118,20 +118,51 @@ public class D_LazyTree<T> extends AbstractSet<T> {
         return root;
     }
 
+    public T findMin()
+    {
+        return findMin(root).element;
+    }
+
     private BinaryNode<T> findMin(BinaryNode<T> t){
         if(t!=null)
-            while (t.left!=null)
-                t=t.left;
+            if(t.deleted){
+                if(t.left!=null){
+                    t=findMin(t.left);
+                }else if(t.right!=null){
+                    t=findMin(t.right);
+                }
+            }else{
+                while (t.left!=null){
+                    if(t.left.deleted){
+                        t=findMin(t.left);
+                    }else{
+                        t=t.left;
+                    }
+                }
+
+            }
         return t;
+    }
+
+    public T findMax(){
+        return findMax(root).element;
     }
 
     private BinaryNode<T> findMax(BinaryNode<T> t){
         if(t!=null)
-            while(t.right!=null){
-                if(t.right.deleted){
-
-                }else{
-                    t=t.right;
+            if(t.deleted){
+                if(t.right!=null){
+                    t=findMax(t.right);
+                }else if(t.left!=null){
+                    t=findMax(t.left);
+                }
+            }else {
+                while (t.right != null) {
+                    if (t.right.deleted) {
+                        t = findMax(t.right);
+                    } else {
+                        t = t.right;
+                    }
                 }
             }
         return t;
