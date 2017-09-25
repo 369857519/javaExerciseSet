@@ -27,9 +27,7 @@ public class E_AVLTree<T> implements Iterable<T> {
     
     public Boolean insert(T x)
     {
-        System.out.println(root);
         root=insert(x,root);
-        System.out.println(root.element);
         return true;
     }
     
@@ -86,13 +84,13 @@ public class E_AVLTree<T> implements Iterable<T> {
 
     private AvlNode<T> doubleWithLeftChild(AvlNode<T> k3)
     {
-        k3.left=rotateWithLeftChild(k3.left);
+        k3.left=rotateWithRightChild(k3.left);
         return rotateWithLeftChild(k3);
     }
 
     private AvlNode<T> doubleWithRightChild(AvlNode<T> k3)
     {
-        k3.right=rotateWithRightChild((k3.right));
+        k3.right=rotateWithLeftChild((k3.right));
         return rotateWithRightChild(k3);
     }
 
