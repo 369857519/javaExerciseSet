@@ -55,20 +55,20 @@ public class A_Sets {
 //        System.out.println(treeSet.findMin());
 
         //高度为15的AVL树种节点最小的个人数 N(h)=N(h-1)+N(h-2)+1
-
-        E_AVLTree<Integer> treeSet=new E_AVLTree<Integer>(){{
-            insert(3);
-            insert(22);
-            insert(5);
-            insert(13);
-            insert(14);
-            insert(6);
-            insert(8);
-            insert(21);
-            insert(10);
-        }};
-
-        System.out.println(treeSet.printTree());
+        System.out.println(123);
+//        E_AVLTree<Integer> treeSet=new E_AVLTree<Integer>(){{
+//            insert(3);
+//            insert(22);
+//            insert(5);
+//            insert(13);
+//            insert(14);
+//            insert(6);
+//            insert(8);
+//            insert(21);
+//            insert(10);
+//        }};
+//
+//        System.out.println(treeSet.printTree());
 
     }
 

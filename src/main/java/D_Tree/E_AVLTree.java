@@ -27,7 +27,10 @@ public class E_AVLTree<T> implements Iterable<T> {
     
     public Boolean insert(T x)
     {
-        return insert(x,root)!=null;
+        System.out.println(root);
+        root=insert(x,root);
+        System.out.println(root.element);
+        return true;
     }
     
     private AvlNode<T> insert(T x,AvlNode<T> t)
