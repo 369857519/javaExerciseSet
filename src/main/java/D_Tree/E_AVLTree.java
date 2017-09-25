@@ -1,14 +1,35 @@
 package D_Tree;
 
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Stack;
+
 /**
  * Created by 祁连山 on 2017/9/23.
  */
-public class E_AVLTree<T> {
+public class E_AVLTree<T> implements Iterable<T> {
     private int height(AvlNode<T> t)
     {
         return t==null?-1:t.height;
     }
 
+    private AvlNode root;
+    
+    private Comparator<? super T> comp;
+    
+    private int compare(T l,T r)
+    {
+        if(comp!=null)
+            return comp.compare(l,r);
+        else
+            return ((Comparable)l).compareTo(r);
+    }
+    
+    public Boolean insert(T x)
+    {
+        return insert(x,root)!=null;
+    }
+    
     private AvlNode<T> insert(T x,AvlNode<T> t)
     {
         if(t==null)
@@ -72,6 +93,56 @@ public class E_AVLTree<T> {
         return rotateWithRightChild(k3);
     }
 
+    public Iterator<T> iterator() {
+        return new B_Iterator<T>();
+    }
+
+    public String printTree()
+    {
+        Iterator<T> it=this.iterator();
+        String str="";
+        while (it.hasNext())
+        {
+            str=str+it.next()+' ';
+        }
+        return str;
+    }
+
+    private class B_Iterator<T> implements Iterator<T>
+    {
+        AvlNode<T> currentNode;
+        private Stack<AvlNode<T>> s=new Stack<AvlNode<T>>();
+
+        public B_Iterator(){
+            currentNode=root;
+            while(currentNode!=null){
+                s.push(currentNode);
+                currentNode=currentNode.left;
+            }
+        }
+        public boolean hasNext() {
+            return !s.empty();
+        }
+
+        public T next() {
+            AvlNode<T> n=s.pop();
+            T res=n.element;
+            if(n.right!=null)
+            {
+                n=n.right;
+                while (n!=null){
+                    s.push(n);
+                    n=n.left;
+                }
+            }
+            return res;
+        }
+
+        public void remove() {
+
+        }
+    }
+    
     private static class AvlNode<T>
     {
         AvlNode(T theElement)
