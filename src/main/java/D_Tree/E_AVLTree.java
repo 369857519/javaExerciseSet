@@ -16,7 +16,20 @@ public class E_AVLTree<T> implements Iterable<T> {
     private AvlNode root;
     
     private Comparator<? super T> comp;
-    
+
+    private boolean isLegal=true;
+
+    public boolean isLegal(){
+
+    }
+
+    public boolean traverseHeight(AvlNode<T> avl,int currentHeight){
+        boolean result=true;
+        if(avl==null){
+            return true;
+        }
+
+    }
     private int compare(T l,T r)
     {
         if(comp!=null)
