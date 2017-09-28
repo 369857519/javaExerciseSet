@@ -20,15 +20,28 @@ public class E_AVLTree<T> implements Iterable<T> {
     private boolean isLegal=true;
 
     public boolean isLegal(){
-
+        isLegal=true;
+        traverseHeight(root,height(root));
+        return isLegal;
     }
 
-    public boolean traverseHeight(AvlNode<T> avl,int currentHeight){
+    public int traverseHeight(AvlNode<T> avl,int currentHeight){
         boolean result=true;
         if(avl==null){
-            return true;
+            return 0;
+        }
+        //如果子树的高度与当前高度不一致，判断非法
+        if(height(avl)!=currentHeight){
+            isLegal=false;
+            return 0;
+        }
+        //如果左右子树相差1，则判断非法
+        if(traverseHeight(avl.left,currentHeight-1)-traverseHeight(avl.right,currentHeight-1)>1){
+            isLegal=false;
+            return 0;
         }
 
+        return height(avl);
     }
     private int compare(T l,T r)
     {
