@@ -6,13 +6,36 @@ import java.nio.BufferUnderflowException;
  * Created by qilianshan on 17/10/31.
  */
 public class A_BinaryHeap<T extends Comparable<? super T>> {
+
+    public static void main(String[] args)
+    {
+        A_BinaryHeap heap=new A_BinaryHeap();
+        heap.insert(10);
+        heap.insert(12);
+        heap.insert(1);
+        heap.insert(14);
+        heap.insert(6);
+        heap.insert(5);
+        heap.insert(8);
+        heap.insert(15);
+        heap.insert(3);
+        heap.insert(9);
+        heap.insert(7);
+        heap.insert(4);
+        heap.insert(11);
+        heap.insert(13);
+        heap.insert(2);
+    }
+
     public A_BinaryHeap(){
-        this((T[])new Comparable[DEFAULT_CAPACITY]);
+        currentSize=0;
+        array=(T[])new Comparable[(currentSize+2)*11/10];
     }
 
     public A_BinaryHeap(int capacity)
     {
-        this((T[])new Comparable[capacity]);
+        currentSize=capacity;
+        array=(T[])new Comparable[(currentSize+2)*11/10];
     }
 
     public A_BinaryHeap(T[] items)
@@ -31,7 +54,10 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
             enlargeArray(array.length*2+1);
 
         int hole=++currentSize;
-
+        //数组为空的情况下，直接插入
+//        while (hole>1&&array[hole]==null){
+//            hole/=2;
+//        }
         for(;hole>1&&x.compareTo(array[hole/2])<0;hole/=2){
             //比对父节点，如果小于父节点，此时的位置等于父节点，继续下滤，
             array[hole]=array[hole/2];
@@ -93,7 +119,11 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
 
     private void enlargeArray(int newSize)
     {
-
+        T[] newArr=(T[]) new Comparable[newSize];
+        int i=0;
+        for(T item:array){
+            newArr[i++]=item;
+        }
     }
 
 }

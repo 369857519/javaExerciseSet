@@ -112,7 +112,7 @@ public class F_SplayTree<T> implements Iterable<T> {
         }
 
         public void remove() {
-            F_SplayTree.this.remove(currentNode.element);
+//            F_SplayTree.this.remove(currentNode.element);
         }
     }
 
