@@ -130,7 +130,7 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
 
     public String toString(){
         String str="";
-        for(int i=1;i<currentSize;i++)
+        for(int i=1;i<=currentSize;i++)
         {
             str+=array[i].toString();
             str+=",";
