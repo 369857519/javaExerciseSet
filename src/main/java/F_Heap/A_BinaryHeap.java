@@ -9,7 +9,7 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
 
     public static void main(String[] args)
     {
-        A_BinaryHeap heap=new A_BinaryHeap();
+        A_BinaryHeap<Integer> heap=new A_BinaryHeap();
         heap.insert(10);
         heap.insert(12);
         heap.insert(1);
@@ -25,6 +25,7 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
         heap.insert(11);
         heap.insert(13);
         heap.insert(2);
+        System.out.println(heap.toString());
     }
 
     public A_BinaryHeap(){
@@ -124,6 +125,18 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
         for(T item:array){
             newArr[i++]=item;
         }
+        array=newArr;
+    }
+
+    public String toString(){
+        String str="";
+        for(int i=1;i<currentSize;i++)
+        {
+            str+=array[i].toString();
+            str+=",";
+        }
+        str=str.substring(0,str.length()-1);
+        return str;
     }
 
 }
