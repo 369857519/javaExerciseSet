@@ -25,7 +25,11 @@ public class A_BinaryHeap<T extends Comparable<? super T>> {
         heap.insert(11);
         heap.insert(13);
         heap.insert(2);
-        System.out.println(heap.toString());
+        System.out.println(heap);
+        heap.deleteMin();
+        heap.deleteMin();
+        heap.deleteMin();
+        System.out.println(heap);
     }
 
     public A_BinaryHeap(){
