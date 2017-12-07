@@ -9,7 +9,13 @@ public class Maze {
     }
     public Maze(int width,int height)
     {
-
+         int[][] matrix=new int[width][height];
+         int num=0;
+         for(int i=0;i<width;i++){
+             for(int j=0;j<width;j++){
+                 matrix[i][j]=num++;
+             }
+         }
     }
 
     private class wall {
