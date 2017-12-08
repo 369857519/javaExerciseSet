@@ -22,7 +22,8 @@ public class ExampleSet {
     {
         Queue<TreeNode> queue=new ArrayDeque<TreeNode>();
         TreeNode tmp=tn;
-        while(queue.isEmpty())
+        queue.add(tn);
+        while(!queue.isEmpty())
         {
             tmp=queue.remove();
             System.out.println(tmp.val);
